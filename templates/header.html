@@ -1,0 +1,24 @@
+{% load static %}
+
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <div class="col-md-2 mb-2 mb-md-0">
+      <a href="{% url 'Peones' %}" class="d-inline-flex link-body-emphasis text-decoration-none">
+        <img width="40" height="32" src="{% static 'logo.png' %}">
+      </a>
+    </div>
+
+    
+    {% if user.is_authenticated %}
+      <div class="flex-shrink-0 dropdown">
+        <div class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="{% static 'user.png' %}" alt="mdo" width="32" height="32" class="rounded-circle">
+        </div>
+        <ul class="dropdown-menu text-small shadow">
+          <li><p class="text-center">{{request.user}}</p></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item btn btn-danger" href="{% url 'Logout' %}">Cerrar sesion</a></li>
+        </ul>
+      </div>
+    {% endif %}
+    
+</header>

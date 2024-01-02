@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+
+{% block content %}
+        <div class="row justify-content-between my-4 mx-2">
+          <div class="col-6 card">
+            <div class="card-body">
+              <h5>{{peon.nombre}}</h5>
+              <p>{{peon.n_cedula}}</p>
+            </div>
+          </div>
+          <div class="col-5 card">
+            <div class="card-body">
+              {% if peon.activo  %}
+                <h5>{{contrato.fecha_inicio|timesince}}</h5>
+                <p>{{contrato.fecha_inicio}}</p>
+              {% else %}
+                <h5>✕ Este usuario esta inactivo</h5>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center">
+            <a href="{% url 'Peones' %}" class="mb-1 me-2 btn text-center" class="">←</a>
+            <h5>Ultimos retiros</h5>
+          </div>
+          <div>
+            {% if peon.activo  %}
+              <a class="btn btn-danger m-0" href="{% url 'CambiarActivo' peon.id %}">Desactivar</a>
+              <a class="btn btn-primary m-0" href="{% url 'CrearRetiro' peon.id %}">+ Crear retiro</a>
+            {% else %}
+              <a class="btn btn-success m-0" href="{% url 'CambiarActivo' peon.id %}">Activar</a>
+            {% endif %}
+          </div>
+        </div>
+        <hr>
+        <div class="table-responsive small">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th scope="col">#Retiro</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Monto total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for retiro in retiros %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{retiro.fecha_retiro}}</td>
+                    <td>{{retiro.monto}}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+{% endblock content %}

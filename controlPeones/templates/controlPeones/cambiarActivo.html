@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <div class="d-flex align-items-center" style="height: calc(100vh - 200px);">
+        <form class="w-100 d-flex flex-column align-items-center" action="" method="post">
+            {% csrf_token %}
+            <h5>Estas seguro que deseas {{estado}} el peon "{{peon.nombre}}"?</h5>
+            <div>
+                <input class="btn btn-success" type="submit" value="Aceptar">
+                <a class="btn btn-danger" href="{% url 'Peones' %}">Cancelar</a>
+            </div>
+        </form>
+    </div>
+    <p></p>
+{% endblock content %}

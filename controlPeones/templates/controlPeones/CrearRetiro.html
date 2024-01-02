@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+
+{% block content %}
+        
+        <div class="container d-flex flex-column justify-content-center" style="max-width: 700px;">
+          <div class="d-flex align-items-center">
+            <a onclick="history.back();" class="btn mt-2 text-center">←</a>
+            <h5 class="mt-3 ms-2">Crear nuevo retiro</h5>
+          </div>
+          <hr>
+          <form class="w-100" action="" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <h6>N° Cedula</h6>
+              <p>{{peon.n_cedula}}</p>
+            </div>
+            <div class="mb-3">
+              <h6>Nombre del peon</h6>
+              <p>{{peon.nombre}}</p>
+            </div>
+            <div class="mb-3">
+              <h6>Dinero por mes</h6>
+              <p id="dineroMes">{{peon.contrato.cuota_mensual}}</p>
+            </div>
+            <div class="mb-3">
+              <h6>Fecha de inicio</h6>
+              <p id="fechaInicio">{{contrato.fecha_inicio|date:"d/m/Y"}}</p>
+            </div>
+            <div class="mb-3">
+              <h6>Fecha retiro</h6>
+              {{form.fecha_retiro}}
+            </div>
+            <div class="mb-3">
+              <h6>Total del dinero</h6>
+              {{form.monto}}
+            </div>
+            {% include 'message.html' %}
+            <button type="submit" class="btn btn-primary w-100">Crear retiro</button>
+          </form>
+        </div>
+{% endblock content %}

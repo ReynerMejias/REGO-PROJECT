@@ -1,0 +1,7 @@
+{% if messages %}
+<ul class="messages list-unstyled d-flex justify-content-center text-danger">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
