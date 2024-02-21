@@ -2,10 +2,6 @@
 
 Este proyecto es una aplicación web desarrollada en Django para facilitar el control mensual de las liquidaciones de empleados. Aunque fue diseñada específicamente para un negocio en particular, su estructura y funcionalidades pueden adaptarse fácilmente a otros contextos similares.
 
-## Información del Desarrollador
-
-- **Nombre de Usuario de GitHub:** ReynerMejias
-
 ## Tecnologías Utilizadas
 
 - Django
